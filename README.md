@@ -80,8 +80,3 @@ pip install groq  # Groq 모델 사용 시
 
  
 ---
-
-## 🙌 기여자
-
-- 개발자: 정다훈 (Dahoon Jung)
-- 문의: [이메일 주소 또는 GitHub 링크]
