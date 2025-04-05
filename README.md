@@ -78,14 +78,7 @@ pip install langchain-huggingface sentence-transformers
 pip install groq  # Groq 모델 사용 시
 ```
 
----
-
-## 🖼️ 대체 이미지 삽입 (Mermaid 미지원 뷰어용)
-
-```markdown
-![RAG 데이터 흐름도](./images/rag_full_flow.png)
-```
-
+ 
 ---
 
 ## 🙌 기여자
