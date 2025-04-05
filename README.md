@@ -17,10 +17,7 @@ flowchart TD
     F --> G[📊 Chroma 벡터 DB 구축 or 로드]
     G --> H[🔍 Retriever 생성 => Top-k 문서 검색기]
 
-
-
-
-
+```mermaid
 flowchart TD
     Q[❓ 사용자 질문] --> T[🌐 영어 번역 translate_chain]
     T --> R[🔎 관련 문서 검색 Retriever]
