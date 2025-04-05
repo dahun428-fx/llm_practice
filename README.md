@@ -78,6 +78,7 @@ pip install langchain-huggingface sentence-transformers
 pip install groq  # Groq 모델 사용 시
 ```
 
+---
  
 # 📘 Contextual Retrieval 기반 RAG 시스템
 
