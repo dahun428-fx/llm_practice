@@ -19,6 +19,7 @@ flowchart TD
     G --> H[🔍 Retriever 생성 => Top-k 문서 검색기]
 ```
 ```mermaid
+flowchart TD
     Q[❓ 사용자 질문] --> T[🌐 영어 번역 translate_chain]
     T --> R[🔎 관련 문서 검색 Retriever]
     R --> FMT[📚 문서 포맷팅 format_docs]
