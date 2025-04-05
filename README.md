@@ -17,8 +17,7 @@ flowchart TD
     F --> G[📊 Chroma 벡터 DB 구축 or 로드]
     G --> H[🔍Retriever 생성 => Top-k 문서 검색기 ]
 
-=============================
-🧠 질문 처리 흐름 (RAG 응답)
+## 🧠 질문 처리 흐름 (RAG 응답)
 
 flowchart TD
     Q[❓ 사용자 질문] --> T[🌐 영어 번역 translate_chain]
@@ -28,7 +27,6 @@ flowchart TD
     P --> LLM[🤖 LLM 응답 생성 llm]
     LLM --> A[✅ 최종 응답 출력]
 
-=============================
 
 setup_vector_db()
 → PDF 파일을 불러와 텍스트를 추출하고, 문서를 분할하여 임베딩을 생성한 뒤 Chroma에 저장합니다.
