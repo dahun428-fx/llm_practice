@@ -15,7 +15,7 @@ flowchart TD
     D --> E[📦 캐시 저장 token_chunk.pkl / hash.txt]
     E --> F[💡 임베딩 생성 HuggingFaceEmbeddings]
     F --> G[📊 Chroma 벡터 DB 구축 or 로드]
-    G --> H[🔍 Retriever 생성 { Top-k 문서 검색기 } ]
+    G --> H[🔍 Retriever 생성  ]
 
 
 ---
