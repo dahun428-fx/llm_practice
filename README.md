@@ -5,28 +5,18 @@
 
 ---
 
-## 📂 전체 데이터 흐름 (벡터 DB 구축 + 질의응답)
-
-> 💡 GitHub에서 Mermaid 다이어그램이 렌더링되지 않을 경우 아래 이미지로 대체해 주세요.
+## 📂 데이터 처리 흐름 (벡터 DB 구축)
 
 ```mermaid
 flowchart TD
-    A[PDF Input] --> B[Extract Text (PyMuPDFLoader)]
-    B --> C[Merge Pages + Metadata]
-    C --> D[Split Text (RecursiveCharacterTextSplitter)]
-    D --> E[Cache Save (token_chunk.pkl)]
-    E --> F[Generate Embeddings (HuggingFaceEmbeddings)]
-    F --> G[Build or Load Chroma DB]
-    G --> H[Create Retriever (Top-k Search)]
+    A[📂 PDF 파일] --> B[🧠 텍스트 추출<br>PyMuPDFLoader]
+    B --> C[📄 문서 통합<br>+ 메타데이터 추가]
+    C --> D[🔪 텍스트 분할<br>RecursiveCharacterTextSplitter]
+    D --> E[📦 캐시 저장<br>token_chunk.pkl / hash.txt]
+    E --> F[💡 임베딩 생성<br>HuggingFaceEmbeddings]
+    F --> G[📊 Chroma 벡터 DB 구축 or 로드]
+    G --> H[🔍 Retriever 생성<br>(Top-k 문서 검색기)]
 
-    I[User Question] --> J[Translate to English (translate_chain)]
-    J --> K[Search Relevant Docs (Retriever)]
-    K --> L[Format Docs (format_docs)]
-    L --> M[Build Prompt (ChatPromptTemplate)]
-    M --> N[LLM Answer (llm)]
-    N --> O[Final Answer Output]
-
-    H -.-> K
 
 ---
 
