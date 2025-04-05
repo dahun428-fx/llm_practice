@@ -5,23 +5,28 @@
 
 ---
 
-## 📂 데이터 처리 흐름 (벡터 DB 구축)
+## 📂 전체 데이터 흐름 (벡터 DB 구축 + 질의응답)
+
+> 💡 GitHub에서 Mermaid 다이어그램이 렌더링되지 않을 경우 PNG 이미지로 대체해 주세요.
 
 ```mermaid
 flowchart TD
-    A[📂 PDF 파일] --> B[🧠 텍스트 추출 PyMuPDFLoader]
-    B --> C[📄 문서 통합 + 메타데이터 추가]
-    C --> D[🔪 텍스트 분할 RecursiveCharacterTextSplitter]
-    D --> E[📦 캐시 저장 token_chunk.pkl / hash.txt]
-    E --> F[💡 임베딩 생성 HuggingFaceEmbeddings]
-    F --> G[📊 Chroma 벡터 DB 구축 or 로드]
-    G --> H[🔍 Retriever 생성 => Top-k 문서 검색기]
+    %% 벡터 DB 구축
+    A[📂 PDF 파일] --> B[🧠 텍스트 추출\n(PDF → 텍스트)]
+    B --> C[📄 문서 통합\n+ 메타데이터 추가]
+    C --> D[🔪 텍스트 분할\n(RecursiveCharacterTextSplitter)]
+    D --> E[📦 캐시 저장\n(token_chunk.pkl, hash.txt)]
+    E --> F[💡 임베딩 생성\n(HuggingFaceEmbeddings)]
+    F --> G[📊 Chroma DB 구축 or 로드]
+    G --> H[🔍 Retriever 생성\n(Top-k 문서 검색기)]
 
-```mermaid
-flowchart TD
-    Q[❓ 사용자 질문] --> T[🌐 영어 번역 translate_chain]
-    T --> R[🔎 관련 문서 검색 Retriever]
-    R --> FMT[📚 문서 포맷팅 format_docs]
-    FMT --> P[📝 Prompt 구성 ChatPromptTemplate]
-    P --> LLM[🤖 LLM 응답 생성 llm]
-    LLM --> A[✅ 최종 응답 출력]
+    %% 질문 처리 흐름
+    I[❓ 사용자 질문] --> J[🌐 영어 번역\n(translate_chain)]
+    J --> K[🔎 유사 문서 검색\n(Retriever)]
+    K --> L[📚 문서 포맷팅\n(format_docs)]
+    L --> M[📝 Prompt 구성\n(ChatPromptTemplate)]
+    M --> N[🤖 LLM 응답 생성\n(llm + 출력 파서)]
+    N --> O[✅ 최종 응답 출력]
+
+    %% 라인 연결
+    H -.-> K
