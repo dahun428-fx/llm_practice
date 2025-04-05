@@ -9,13 +9,13 @@
 
 ```mermaid
 flowchart TD
-    A[📂 PDF 파일] --> B[🧠 텍스트 추출<br>PyMuPDFLoader]
-    B --> C[📄 문서 통합<br>+ 메타데이터 추가]
-    C --> D[🔪 텍스트 분할<br>RecursiveCharacterTextSplitter]
-    D --> E[📦 캐시 저장<br>token_chunk.pkl / hash.txt]
-    E --> F[💡 임베딩 생성<br>HuggingFaceEmbeddings]
+    A[📂 PDF 파일] --> B[🧠 텍스트 추출 PyMuPDFLoader]
+    B --> C[📄 문서 통합 + 메타데이터 추가]
+    C --> D[🔪 텍스트 분할 RecursiveCharacterTextSplitter]
+    D --> E[📦 캐시 저장 token_chunk.pkl / hash.txt]
+    E --> F[💡 임베딩 생성 HuggingFaceEmbeddings]
     F --> G[📊 Chroma 벡터 DB 구축 or 로드]
-    G --> H[🔍 Retriever 생성<br>(Top-k 문서 검색기)]
+    G --> H[🔍 Retriever 생성 (Top-k 문서 검색기)]
 
 
 ---
