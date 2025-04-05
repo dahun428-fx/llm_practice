@@ -11,24 +11,22 @@
 
 ```mermaid
 flowchart TD
-    A[PDF 파일] --> B[텍스트 추출\n(PyMuPDFLoader)]
-    B --> C[문서 통합\n+ 메타데이터 추가]
-    C --> D[텍스트 분할\n(RecursiveCharacterTextSplitter)]
-    D --> E[캐시 저장\n(token_chunk.pkl, hash.txt)]
-    E --> F[임베딩 생성\n(HuggingFaceEmbeddings)]
-    F --> G[Chroma DB 구축 또는 로드]
-    G --> H[Retriever 생성\n(Top-k 문서 검색)]
+    A[PDF Input] --> B[Extract Text (PyMuPDFLoader)]
+    B --> C[Merge Pages + Metadata]
+    C --> D[Split Text (RecursiveCharacterTextSplitter)]
+    D --> E[Cache Save (token_chunk.pkl)]
+    E --> F[Generate Embeddings (HuggingFaceEmbeddings)]
+    F --> G[Build or Load Chroma DB]
+    G --> H[Create Retriever (Top-k Search)]
 
-    I[사용자 질문] --> J[질문 영어 번역\n(translate_chain)]
-    J --> K[문서 검색\n(Retriever)]
-    K --> L[문서 포맷팅\n(format_docs)]
-    L --> M[프롬프트 구성\n(ChatPromptTemplate)]
-    M --> N[LLM 응답 생성\n(llm)]
-    N --> O[최종 응답 출력]
+    I[User Question] --> J[Translate to English (translate_chain)]
+    J --> K[Search Relevant Docs (Retriever)]
+    K --> L[Format Docs (format_docs)]
+    L --> M[Build Prompt (ChatPromptTemplate)]
+    M --> N[LLM Answer (llm)]
+    N --> O[Final Answer Output]
 
     H -.-> K
-
-```
 
 ---
 
