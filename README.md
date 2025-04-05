@@ -7,8 +7,6 @@
 
 ## 📂 데이터 처리 흐름 (벡터 DB 구축)
 
-> 💡 GitHub에서는 Mermaid 다이어그램이 일부 마크다운 뷰어에서만 렌더링됩니다.
-
 ```mermaid
 flowchart TD
     A[📂 PDF 파일] --> B[🧠 텍스트 추출 PyMuPDFLoader]
@@ -18,3 +16,15 @@ flowchart TD
     E --> F[💡 임베딩 생성 HuggingFaceEmbeddings]
     F --> G[📊 Chroma 벡터 DB 구축 or 로드]
     G --> H[🔍 Retriever 생성 => Top-k 문서 검색기]
+
+
+
+
+
+flowchart TD
+    Q[❓ 사용자 질문] --> T[🌐 영어 번역 translate_chain]
+    T --> R[🔎 관련 문서 검색 Retriever]
+    R --> FMT[📚 문서 포맷팅 format_docs]
+    FMT --> P[📝 Prompt 구성 ChatPromptTemplate]
+    P --> LLM[🤖 LLM 응답 생성 llm]
+    LLM --> A[✅ 최종 응답 출력]
