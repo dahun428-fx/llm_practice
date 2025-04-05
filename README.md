@@ -4,26 +4,27 @@
 사용자의 질문을 LLM으로 응답하는 **RAG(Retrieval-Augmented Generation)** 파이프라인입니다.
 
 ---
-
 ## 📂 데이터 처리 흐름 (벡터 DB 구축)
 
 ```mermaid
 flowchart TD
-    A[📂 PDF 파일] --> B[🧠 텍스트 추출<br>PyMuPDFLoader]
-    B --> C[📄 문서 통합<br>+ 메타데이터 추가]
-    C --> D[🔪 텍스트 분할<br>RecursiveCharacterTextSplitter]
-    D --> E[📦 캐시 저장<br>token_chunk.pkl / hash.txt]
-    E --> F[💡 임베딩 생성<br>HuggingFaceEmbeddings]
-    F --> G[📊 Chroma 벡터 DB 구축 or 로드]
-    G --> H[🔍 Retriever 생성<br>(Top-k 문서 검색기)]
+    A[PDF 파일] --> B[텍스트 추출\nPyMuPDFLoader]
+    B --> C[문서 통합\n+ 메타데이터 추가]
+    C --> D[텍스트 분할\nRecursiveCharacterTextSplitter]
+    D --> E[캐시 저장\ntoken_chunk.pkl / hash.txt]
+    E --> F[임베딩 생성\nHuggingFaceEmbeddings]
+    F --> G[Chroma 벡터 DB 구축 or 로드]
+    G --> H[Retriever 생성\n(Top-k 문서 검색기)]
+
+=============================
 
 flowchart TD
-    Q[❓ 사용자 질문] --> T[🌐 영어 번역<br>translate_chain]
-    T --> R[🔎 관련 문서 검색<br>Retriever]
-    R --> FMT[📚 문서 포맷팅<br>format_docs]
-    FMT --> P[📝 Prompt 구성<br>ChatPromptTemplate]
-    P --> LLM[🤖 LLM 응답 생성<br>llm]
-    LLM --> A[✅ 최종 응답 출력]
+    Q[사용자 질문] --> T[영어 번역\ntranslate_chain]
+    T --> R[관련 문서 검색\nRetriever]
+    R --> FMT[문서 포맷팅\nformat_docs]
+    FMT --> P[Prompt 구성\nChatPromptTemplate]
+    P --> LLM[LLM 응답 생성\nllm]
+    LLM --> A[최종 응답 출력]
 
 =============================
 
